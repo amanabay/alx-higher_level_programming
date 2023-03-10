@@ -15,10 +15,10 @@ if __name__ == "__main__":
         print(argv[2])
         print("Unknown operator. Available operators: +, -, * and /")
         exit(1)
-    
+
     a = int(sys.argv[1])
     b = int(sys.argv[3])
-    
+
     if argv[2] == '+':
         print("{} + {} = {}".format(a, b, add(a, b)))
     elif argv[2] == '-':
