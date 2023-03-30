@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+"""MagicClass definition to bytecode"""
+
 import math
 
 
