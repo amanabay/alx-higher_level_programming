@@ -4,7 +4,11 @@
 
 
 class Rectangle:
-    """Rectangle representation"""
+    """Rectangle representation
+
+    Attributes:
+        number_of_instances (int): Number of Rectangle instances.
+    """
 
     number_of_instances = 0
 
@@ -82,4 +86,5 @@ class Rectangle:
 
     def __del__(self):
         """Prints message for every deletion of Rectangle instance"""
+        type(self).number_of_instances -= 1
         print("Bye rectangle...")
