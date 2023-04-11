@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Object attribute and mehtod lookup function"""
 
 
 def lookup(obj):
