@@ -2,7 +2,7 @@
 """Function definiton for a appending to file"""
 
 
-def write_file(filename="", text=""):
+def append_write(filename="", text=""):
     """ Appends a string to a text file (UTF8) and returns
         the number of characters added
 
