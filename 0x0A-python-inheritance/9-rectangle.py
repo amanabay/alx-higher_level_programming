@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#arc(320, 240 + i, 45, 135, 100);!/usr/bin/python3
 """Class Rectangle inherits from BaseGeometry"""
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
