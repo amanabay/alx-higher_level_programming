@@ -53,7 +53,7 @@ class Rectangle(Base):
     @property
     def x(self):
         """The x property."""
-        return self._x
+        return self.__x
 
     @x.setter
     def x(self, value):
@@ -81,19 +81,24 @@ class Rectangle(Base):
         return (self.width * self.height)
 
     def display(self):
+        """Print using octothorpe(#)"""
         if self.height == 0 or self.width == 0:
             print("")
             return
 
-        for i in range(self.width):
-            for j in range(self.height):
+        for y in range(self.y):
+            print("")
+        for h in range(self.height):
+            for x in range(self.x):
+                print(" ", end="")
+            for w in range(self.width):
                 print("#", end="")
             print("")
 
-r1 = Rectangle(4, 6)
-r1.display()
-
-print("---")
-
-r1 = Rectangle(2, 2)
-r1.display()
+    def __str__(self):
+        """Prints rectangle details"""
+        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(self.id,
+                                                                 self.x,
+                                                                 self.y,
+                                                                 self.width,
+                                                                 self.height)
