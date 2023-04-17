@@ -1,6 +1,6 @@
 #!/usr/bin//python3
 """Class definition for Rectangle class"""
-from models.base import Base
+from base import Base
 
 
 class Rectangle(Base):
@@ -76,12 +76,24 @@ class Rectangle(Base):
             raise ValueError("y must be >= 0")
         self.__y = value
 
+    def area(self):
+        """Area of Rectangle"""
+        return (self.width * self.height)
 
-r1 = Rectangle(10, 2)
-print(r1.id)
+    def display(self):
+        if self.height == 0 or self.width == 0:
+            print("")
+            return
 
-r2 = Rectangle(2, 10)
-print(r2.id)
+        for i in range(self.width):
+            for j in range(self.height):
+                print("#", end="")
+            print("")
 
-r3 = Rectangle(10, 2, 0, 0, 12)
-print(r3.id)
+r1 = Rectangle(4, 6)
+r1.display()
+
+print("---")
+
+r1 = Rectangle(2, 2)
+r1.display()
