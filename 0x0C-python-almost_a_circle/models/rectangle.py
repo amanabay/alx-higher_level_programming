@@ -4,6 +4,8 @@ from base import Base
 
 
 class Rectangle(Base):
+    """Rectangle"""
+
     def __init__(self, width, height, x=0, y=0, id=None):
         """Rectangle class
 
@@ -149,3 +151,13 @@ class Rectangle(Base):
                     self.x = v
                 elif k == "y":
                     self.y = v
+
+    def to_dictionary(self):
+        """Dictionary representation of Rectangle"""
+        return {
+                "id": self.id,
+                "width": self.width,
+                "height": self.height,
+                "x": self.x,
+                "y": self.y
+        }
