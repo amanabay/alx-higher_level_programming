@@ -39,6 +39,12 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
+        """ Saves JSON string representation to JSON file
+
+            Args:
+                list_objs (list): is a list of instances who inherits of Base
+        """
+
         fname = cls.__name__ + ".json"
 
         with open(fname, "w") as jfile:
@@ -49,4 +55,45 @@ class Base:
                     list_dictionaries = obj.to_dictionary()
                 jfile.write(Base.to_json_string(list_dictionaries))
 
+    @staticmethod
+    def from_json_string(json_string):
+        """ Returns the list of the JSON string representation json_string
 
+            Args:
+                json_string (list): string representing a list of dictionaries
+        """
+
+        if json_string is None or json_string == "[]":
+            return []
+        return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """ Returns an instance with all attributes already set from
+            a dictionary of attributes
+
+            Args:
+                **dictionary (dict): dictionary of attributes to initialize
+        """
+
+        if dictionary and dictionary != {}:
+            if cls.__name__ == "Rectangle":
+                new = cls(2, 3)
+            else:
+                new = cls(3)
+            new.update(**dictionary)
+            return new
+
+    @classmethod
+    def load_from_file(cls):
+        fname = str(cls.__name__) + ".json"
+
+        try:
+            with open(fname, "r") as jfile:
+                list_dictionaries = Base.from_json_string(jfile.read())
+                for d in list_dictionaries:
+                    return cls.create(**d)
+        except IOError:
+            return ([])
+
+    
