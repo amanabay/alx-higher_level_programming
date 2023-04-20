@@ -16,7 +16,7 @@ class Square(Rectangle):
             id (int): unique identifier of Rectangle
 
         """
-        super.__init__(self, size, size, x, y, id)
+        super().__init__(size, size, x, y, id)
 
     @property
     def size(self):
@@ -69,3 +69,10 @@ class Square(Rectangle):
                     self.x = v
                 elif k == "y":
                     self.y = v
+
+    def __str__(self):
+        """Prints square details"""
+        return "[Square] ({:d}) {:d}/{:d} - {:d}".format(self.id,
+                                                         self.x,
+                                                         self.y,
+                                                         self.width)
