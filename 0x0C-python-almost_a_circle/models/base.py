@@ -2,6 +2,7 @@
 """Class definition for Base"""
 
 import json
+import csv
 
 
 class Base:
@@ -86,6 +87,8 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
+        """Returns a list of classes instantiated from a file ofJSON
+           strings"""
         fname = str(cls.__name__) + ".json"
 
         try:
@@ -96,4 +99,41 @@ class Base:
         except IOError:
             return ([])
 
-    
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """ Saves csv string representation to JSON file
+
+            Args:
+                list_objs (list): is a list of instances who inherits of Base
+        """
+        fname = cls.__name__ + ".csv"
+        with open(fname, "w", newline="") as cfile:
+            if list_objs is None or list_objs == []:
+                cfile.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(cfile, fieldnames=fieldnames)
+                for obj in list_objs:
+                    writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Returns a list of classes instantiated from a CSV file
+        """
+        fname = cls.__name__ + ".csv"
+        try:
+            with open(fname, "r", newline="") as cfile:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+                list_dictionaries = csv.DictReader(cfile,
+                                                   fieldnames=fieldnames)
+                for d in list_dictionaries:
+                    list_dictionaries = dict([k, int(v)] for k, v in d.items())
+                    return cls.create(**d)
+        except IOError:
+            return []
