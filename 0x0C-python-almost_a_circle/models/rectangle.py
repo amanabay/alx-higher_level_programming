@@ -1,4 +1,4 @@
-#!/usr/bin//python3
+#!/usr/bin/python3
 """Class definition for Rectangle class"""
 from models.base import Base
 
@@ -136,7 +136,7 @@ class Rectangle(Base):
                     self.y = arg
                 count += 1
 
-        elif kwargs and len(kwargs) != 0:
+        else:
             for k, v in kwargs.items():
                 if k == "id":
                     if v is None:
