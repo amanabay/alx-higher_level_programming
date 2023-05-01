@@ -1,0 +1,99 @@
+>>> from io import StringIO
+>>> import sys
+
+# Test case 1: text with no ., ?, or : characters
+>>> text_indentation("This is a test")
+This is a test
+
+# Test case 2: text with one sentence ending in '.', '?' or ':'
+>>> text_indentation("This is a test. Hello world?")
+This is a test
+
+Hello world
+
+# Test case 3: text with multiple sentences ending in '.', '?' or ':'
+>>> text_indentation("This is a test. Hello world? How are you doing today: fine?")
+This is a test
+
+Hello world
+
+How are you doing today
+
+fine
+
+# Test case 4: text with empty string
+>>> text_indentation("")
+Traceback (most recent call last):
+    ...
+ValueError: Text cannot be empty
+
+# Test case 5: text with newline characters
+>>> text_indentation("This is a test\nwith a new line\nin the middle.")
+This is a test
+with a new line
+in the middle.
+
+# Test case 6: text with only whitespaces
+>>> text_indentation("     ")
+Traceback (most recent call last):
+    ...
+ValueError: Text cannot contain only whitespaces
+
+# Test case 7: text with a number
+>>> text_indentation("This is a test with a number: 1234")
+This is a test with a number: 1234
+
+# Test case 8: text with a float
+>>> text_indentation("This is a test with a float: 12.34")
+This is a test with a float: 12.34
+
+# Test case 9: text with a special character
+>>> text_indentation("This is a test with a special character: $")
+This is a test with a special character: $
+
+# Test case 10: text with a mix of valid and invalid characters
+>>> text_indentation("This is a test with a number: 1234! What about this? I don't know.")
+This is a test with a number: 1234
+
+What about this
+
+I don't know
+
+# Test case 11: text with a long sentence
+>>> text_indentation("This is a very long sentence that should be split into multiple lines because it is longer than the maximum length of 79 characters.")
+This is a very long sentence that should be split into multiple lines because it is longer
+than the maximum length of 79 characters.
+
+# Test case 12: text with multiple spaces after ., ?, or :
+>>> text_indentation("This is a test.  Hello world?  How are you doing today:   fine?")
+This is a test
+
+Hello world
+
+How are you doing today
+
+fine
+
+# Test case 13: text with trailing whitespaces
+>>> text_indentation("This is a test.  ")
+This is a test
+
+# Test case 14: text with leading whitespaces
+>>> text_indentation("   This is a test.  ")
+This is a test
+
+# Test case 15: text with only . or ?
+>>> text_indentation("....????")
+.
+.
+.
+.
+?
+
+# Test case 16: text with only :
+>>> text_indentation("::::")
+:
+:
+:
+:
+
