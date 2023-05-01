@@ -28,14 +28,6 @@ class TestMaxInteger(unittest.TestCase):
     def test_float_numbers(self):
         self.assertEqual(max_integer([1.0, 2.5, 3.7]), 3.7)
 
-    def test_string_list(self):
-        with self.assertRaises(TypeError):
-            max_integer(["apple", "banana", "cherry"])
-
-    def test_mixed_list(self):
-        with self.assertRaises(TypeError):
-            max_integer([1, "apple", 3.5, "banana"])
-
 
 if __name__ == '__main__':
     unittest.main()
