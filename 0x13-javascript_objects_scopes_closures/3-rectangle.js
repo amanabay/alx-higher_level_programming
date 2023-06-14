@@ -11,7 +11,7 @@ module.exports = class Rectangle {
   }
 
   print () {
-    let row = 'X';
+    let row = '';
     for (let i = 0; i < this.width; i++) {
       row += 'X';
     }
