@@ -6,8 +6,7 @@ const args = process.argv.slice(2).map(Number);
 if (args.length < 2) {
   console.log(0);
 } else {
-  let max = args[2];
-  let secondMax = args[2];
+  let [max, secondMax] = [-Infinity, -Infinity];
 
   for (let i = 0; i < args.length; i++) {
     const num = args[i];
