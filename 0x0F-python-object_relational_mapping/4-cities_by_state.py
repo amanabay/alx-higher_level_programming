@@ -20,7 +20,10 @@ if __name__ == '__main__':
 
     cursor = db.cursor()
 
-    query = "SELECT * FROM cities ORDER BY id ASC"
+    query = "SELECT c.id, c.name, s.name\
+             FROM cities c, states s\
+             WHERE c.state_id = s.id\
+             ORDER BY c.id ASC"
 
     cursor.execute(query)
 
