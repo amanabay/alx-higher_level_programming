@@ -21,7 +21,9 @@ if __name__ == "__main__":
 
     session = Session()
 
-    states = session.query(State).order_by(State.id).filter(State.name.like('%a%'))
+    states = session.query(State) \
+                    .filter(State.name.like('%a%')) \
+                    .orderby(State.id).all()
 
     if states is None:
         print("Not found")
