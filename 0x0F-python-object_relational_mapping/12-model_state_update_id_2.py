@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-    Script that deletes all State objects with a name 
+    Script that deletes all State objects with a name
     containing the letter a from the database hbtn_0e_6_usa
 """
 
@@ -21,8 +21,8 @@ if __name__ == "__main__":
 
     session = Session()
 
-    state = session.query(State).get(2)
-    state.name = "New Mexico"
+
+
     session.commit()
 
     session.close()
